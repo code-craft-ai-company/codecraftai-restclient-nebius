@@ -2,7 +2,7 @@
 Automation Mojo Interop - Nebius
 =========================================
 
-The ``automojo-interop-nebius`` package is the venue-specific REST client for Nebius, a
+The ``automojo-restclient-nebius`` package is the venue-specific REST client for Nebius, a
 GPU-focused European cloud whose API exposes first-class InfiniBand-enabled placement
 groups and a native shared-filesystem service suitable for distributed-training workloads.
 Nebius shares enough of its shape with conventional IaaS providers to slot into the
@@ -23,8 +23,8 @@ Repository Structure
 
 - ``development/`` - Runtime environment scripts.
 - ``repository-setup/`` - Repository homing and setup scripts.
-- ``source/packages/automojo/interop/nebius/`` - Package source code.
-- ``source/testroots/testbase/automojo/tests/interop/nebius/`` - TestBase test roots.
+- ``source/packages/automojo/restclient/nebius/`` - Package source code.
+- ``source/testroots/testbase/automojo/tests/restclient/nebius/`` - TestBase test roots.
 - ``specs/`` - Requirements, design, and task documentation (Kiro-style).
 - ``userguide/`` - Standards, conventions, and documentation.
 

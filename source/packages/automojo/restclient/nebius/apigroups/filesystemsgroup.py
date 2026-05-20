@@ -19,17 +19,17 @@ from automojo.errors.exceptions import SemanticError
 
 from automojo.restclient.base.restapigroup import RestApiGroup
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.nebiusurl import compose_leaf
-from automojo.interop.nebius.apigroups.disksgroup import _operation_id_of
-from automojo.interop.nebius.apigroups.groupsupport import (
+from automojo.restclient.nebius.nebiusurl import compose_leaf
+from automojo.restclient.nebius.apigroups.disksgroup import _operation_id_of
+from automojo.restclient.nebius.apigroups.groupsupport import (
     collect_pages, is_not_found, raise_for_status
 )
-from automojo.interop.nebius.model.nebiusfilesystem import NebiusFilesystem
-from automojo.interop.nebius.model.nebiustaskhandle import NebiusTaskHandle
-from automojo.interop.nebius.specs.nebiusfilesystemspec import (
+from automojo.restclient.nebius.model.nebiusfilesystem import NebiusFilesystem
+from automojo.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
+from automojo.restclient.nebius.specs.nebiusfilesystemspec import (
     NebiusFilesystemSpec
 )
 

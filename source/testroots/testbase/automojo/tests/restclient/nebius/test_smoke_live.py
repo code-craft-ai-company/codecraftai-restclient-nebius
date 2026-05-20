@@ -22,7 +22,7 @@ import pytest
 from automojo.credentials.nebiusserviceaccountcredential import (
     NebiusServiceAccountCredential
 )
-from automojo.interop.nebius.nebiusclient import NebiusClient
+from automojo.restclient.nebius.nebiusclient import NebiusClient
 
 
 _RUN_LIVE = os.environ.get("RUN_LIVE_NEBIUS", "0") == "1"

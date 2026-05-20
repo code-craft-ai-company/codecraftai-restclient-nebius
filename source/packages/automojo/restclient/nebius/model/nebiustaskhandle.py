@@ -18,10 +18,10 @@ import time
 
 from automojo.errors.exceptions import SemanticError
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.model.nebiusoperationresult import (
+from automojo.restclient.nebius.model.nebiusoperationresult import (
     NebiusOperationResult
 )
 

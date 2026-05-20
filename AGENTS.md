@@ -26,7 +26,7 @@ that are well design, cohesive, and easy to use and that provide rapid but stabl
 
 # Project Overview
 
-The `automojo-interop-nebius` package is the venue-specific REST client
+The `automojo-restclient-nebius` package is the venue-specific REST client
 for Nebius, a GPU-focused European cloud whose API exposes first-class
 InfiniBand-enabled placement groups and a native shared-filesystem service
 suitable for distributed-training workloads. Nebius shares enough of its
@@ -48,10 +48,10 @@ enter as typed `NebiusServiceAccountCredential` instances from
 `automojo-credentials`.
 
 # Testing Conventions
-The 'automojo-interop-nebius' package repository utilizes the 'testbase' framework
+The 'automojo-restclient-nebius' package repository utilizes the 'testbase' framework
 for tests that require live resources, and the 'unittest' framework for isolated
 component tests. Single-host tests live under
-'source/testroots/automojo/tests/singlehost/interop/nebius'.
+'source/testroots/automojo/tests/singlehost/restclient/nebius'.
 
 Property-based tests (hypothesis) are required for paging, URL composition,
 idempotent retry semantics, and CIDR containment checks.
@@ -107,7 +107,7 @@ Consequence: there is no `_codegen/` / `_spec/` tree in this package (unlike
 `automojo-restclient-tailscale`, which imports the published Tailscale
 OpenAPI). When Nebius publishes a consolidated OpenAPI document, a future
 spec revision may introduce a codegen importer; until then the models under
-`source/packages/automojo/interop/nebius/model/` and `.../specs/` are
+`source/packages/automojo/restclient/nebius/model/` and `.../specs/` are
 hand-authored from the documented API and are maintained by hand.
 
 # Project Specific Rules

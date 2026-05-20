@@ -16,13 +16,13 @@ from typing import Any, Dict, List, Optional
 
 from automojo.restclient.base.restapigroup import RestApiGroup
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.apigroups.groupsupport import (
+from automojo.restclient.nebius.apigroups.groupsupport import (
     collect_pages, raise_for_status
 )
-from automojo.interop.nebius.model.nebiusimage import NebiusImage
+from automojo.restclient.nebius.model.nebiusimage import NebiusImage
 
 
 class ImagesGroup(RestApiGroup):

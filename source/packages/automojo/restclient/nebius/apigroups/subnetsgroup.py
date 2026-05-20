@@ -21,19 +21,19 @@ from automojo.errors.exceptions import SemanticError
 
 from automojo.restclient.base.restapigroup import RestApiGroup
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.nebiusurl import compose_leaf
-from automojo.interop.nebius.apigroups.groupsupport import (
+from automojo.restclient.nebius.nebiusurl import compose_leaf
+from automojo.restclient.nebius.apigroups.groupsupport import (
     collect_pages, is_not_found, raise_for_status
 )
-from automojo.interop.nebius.exceptions.nebiusexceptions import (
+from automojo.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusCidrValidationError
 )
-from automojo.interop.nebius.model.nebiussubnet import NebiusSubnet
-from automojo.interop.nebius.model.nebiusvpc import NebiusVpc
-from automojo.interop.nebius.specs.nebiussubnetspec import NebiusSubnetSpec
+from automojo.restclient.nebius.model.nebiussubnet import NebiusSubnet
+from automojo.restclient.nebius.model.nebiusvpc import NebiusVpc
+from automojo.restclient.nebius.specs.nebiussubnetspec import NebiusSubnetSpec
 
 
 def cidr_contained(*, parent_cidr: str, child_cidr: str) -> bool:

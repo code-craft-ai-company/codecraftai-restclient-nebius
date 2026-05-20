@@ -29,36 +29,36 @@ from automojo.credentials.nebiusserviceaccountcredential import (
 
 from automojo.restclient.base.restclientbase import RestClientBase
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.nebiusurl import compose_leaf
-from automojo.interop.nebius.exceptions.nebiusexceptions import (
+from automojo.restclient.nebius.nebiusurl import compose_leaf
+from automojo.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusAuthenticationError
 )
-from automojo.interop.nebius.model.nebiusoperationresult import (
+from automojo.restclient.nebius.model.nebiusoperationresult import (
     NebiusOperationResult
 )
-from automojo.interop.nebius.apigroups.projectsgroup import ProjectsGroup
-from automojo.interop.nebius.apigroups.regionsgroup import RegionsGroup
-from automojo.interop.nebius.apigroups.imagesgroup import ImagesGroup
-from automojo.interop.nebius.apigroups.vpcsgroup import VpcsGroup
-from automojo.interop.nebius.apigroups.subnetsgroup import SubnetsGroup
-from automojo.interop.nebius.apigroups.securitygroupsgroup import (
+from automojo.restclient.nebius.apigroups.projectsgroup import ProjectsGroup
+from automojo.restclient.nebius.apigroups.regionsgroup import RegionsGroup
+from automojo.restclient.nebius.apigroups.imagesgroup import ImagesGroup
+from automojo.restclient.nebius.apigroups.vpcsgroup import VpcsGroup
+from automojo.restclient.nebius.apigroups.subnetsgroup import SubnetsGroup
+from automojo.restclient.nebius.apigroups.securitygroupsgroup import (
     SecurityGroupsGroup
 )
-from automojo.interop.nebius.apigroups.sshkeysgroup import SshKeysGroup
-from automojo.interop.nebius.apigroups.disksgroup import DisksGroup
-from automojo.interop.nebius.apigroups.placementgroupsgroup import (
+from automojo.restclient.nebius.apigroups.sshkeysgroup import SshKeysGroup
+from automojo.restclient.nebius.apigroups.disksgroup import DisksGroup
+from automojo.restclient.nebius.apigroups.placementgroupsgroup import (
     PlacementGroupsGroup
 )
-from automojo.interop.nebius.apigroups.vmsgroup import VmsGroup
-from automojo.interop.nebius.apigroups.filesystemsgroup import FilesystemsGroup
-from automojo.interop.nebius.apigroups.mounttargetsgroup import (
+from automojo.restclient.nebius.apigroups.vmsgroup import VmsGroup
+from automojo.restclient.nebius.apigroups.filesystemsgroup import FilesystemsGroup
+from automojo.restclient.nebius.apigroups.mounttargetsgroup import (
     MountTargetsGroup
 )
-from automojo.interop.nebius.apigroups.tagsgroup import TagsGroup
-from automojo.interop.nebius.apigroups.operationsgroup import OperationsGroup
+from automojo.restclient.nebius.apigroups.tagsgroup import TagsGroup
+from automojo.restclient.nebius.apigroups.operationsgroup import OperationsGroup
 
 
 NEBIUS_API_HOST = "api.nebius.cloud"

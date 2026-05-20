@@ -16,9 +16,9 @@ import requests_mock as rm_module
 
 from automojo.errors.exceptions import SemanticError
 
-from automojo.interop.nebius.model.nebiustaskhandle import NebiusTaskHandle
+from automojo.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
 
-from automojo.tests.interop.nebius.testsupport import (
+from automojo.tests.restclient.nebius.testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 

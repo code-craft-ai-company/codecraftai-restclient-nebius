@@ -1,8 +1,8 @@
 """
-    .. module:: regionsgroup
+    .. module:: projectsgroup
         :platform: Darwin, Linux, Unix, Windows
-        :synopsis: Module that contains the :class:`RegionsGroup` api group
-                   exposing the Nebius region-enumeration endpoint.
+        :synopsis: Module that contains the :class:`ProjectsGroup` api group
+                   exposing the Nebius project-enumeration endpoint.
 
     .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
@@ -16,35 +16,36 @@ from typing import Any, Dict, List, Optional
 
 from automojo.restclient.base.restapigroup import RestApiGroup
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.apigroups.groupsupport import (
+from automojo.restclient.nebius.apigroups.groupsupport import (
     collect_pages, raise_for_status
 )
-from automojo.interop.nebius.model.nebiusregion import NebiusRegion
+from automojo.restclient.nebius.model.nebiusproject import NebiusProject
 
 
-class RegionsGroup(RestApiGroup):
+class ProjectsGroup(RestApiGroup):
     """
-        :class:`RegionsGroup` exposes the Nebius region enumeration
-        endpoint.
+        :class:`ProjectsGroup` exposes the Nebius project enumeration
+        endpoint.  Projects are the apex parent-id used to anchor every
+        other resource.
     """
 
     BASE_LEAF = "/v1"
 
     def list(self, *,
              aspects: AspectsNebius = DEFAULT_NEBIUS_ASPECTS
-             ) -> List[NebiusRegion]:
+             ) -> List[NebiusProject]:
         """
-            List every Nebius region.
+            List every project visible to the credential.
 
             :param aspects: Behaviour control for the call.
 
-            :returns: A list of :class:`NebiusRegion` models.
+            :returns: A list of :class:`NebiusProject` models.
         """
         client = self.client
-        leaf = "/v1/regions"
+        leaf = "/v1/projects"
 
         def _fetch(cursor: Optional[str]) -> Dict[str, Any]:
             params: Dict[str, str] = {"page_size": str(aspects.page_size)}
@@ -52,13 +53,13 @@ class RegionsGroup(RestApiGroup):
                 params["page_token"] = cursor
             response = client.request(method="GET", leaf=leaf,
                                       params=params, aspects=aspects)
-            raise_for_status(response=response, action="list regions")
+            raise_for_status(response=response, action="list projects")
             rtnval = response.json()
             return rtnval
 
         raw_items = collect_pages(fetch_page=_fetch)
-        out: List[NebiusRegion] = []
+        out: List[NebiusProject] = []
         for entry in raw_items:
-            out.append(NebiusRegion.from_dict(entry))
+            out.append(NebiusProject.from_dict(entry))
         rtnval = out
         return rtnval

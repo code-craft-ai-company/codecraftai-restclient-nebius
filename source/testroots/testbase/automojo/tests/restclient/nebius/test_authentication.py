@@ -21,12 +21,12 @@ from automojo.errors.exceptions import ConfigurationError
 
 from automojo.credentials.basecredential import BaseCredential
 
-from automojo.interop.nebius.nebiusclient import NebiusClient
-from automojo.interop.nebius.exceptions.nebiusexceptions import (
+from automojo.restclient.nebius.nebiusclient import NebiusClient
+from automojo.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusAuthenticationError
 )
 
-from automojo.tests.interop.nebius.testsupport import (
+from automojo.tests.restclient.nebius.testsupport import (
     TEST_BASE, TEST_HOST, fast_aspects, make_client, make_credential,
     register_token_exchange
 )

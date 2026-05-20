@@ -53,7 +53,7 @@ Exceptions: `NebiusAuthenticationError`, `NebiusCidrValidationError`,
 ## Module Layout
 
 ```
-source/packages/automojo/interop/nebius/
+source/packages/automojo/restclient/nebius/
 ├── nebiusclient.py
 ├── aspectsnebius.py
 ├── apigroups/

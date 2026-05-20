@@ -20,7 +20,7 @@ from requests import Response
 
 from automojo.errors.exceptions import SemanticError
 
-from automojo.interop.nebius.exceptions.nebiusexceptions import (
+from automojo.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusAuthenticationError
 )
 

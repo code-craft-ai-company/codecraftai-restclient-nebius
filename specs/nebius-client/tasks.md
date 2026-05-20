@@ -2,7 +2,7 @@
 
 ## Package Skeleton
 
-- [x] 1. Create `source/packages/automojo/interop/nebius/` package tree.
+- [x] 1. Create `source/packages/automojo/restclient/nebius/` package tree.
 - [x] 2. Add `aspectsnebius.py` with `DEFAULT_NEBIUS_ASPECTS`.
 
 ## Client Core

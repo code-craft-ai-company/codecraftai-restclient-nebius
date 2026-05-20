@@ -18,16 +18,16 @@ from automojo.errors.exceptions import SemanticError
 
 from automojo.restclient.base.restapigroup import RestApiGroup
 
-from automojo.interop.nebius.aspectsnebius import (
+from automojo.restclient.nebius.aspectsnebius import (
     AspectsNebius, DEFAULT_NEBIUS_ASPECTS
 )
-from automojo.interop.nebius.nebiusurl import compose_leaf
-from automojo.interop.nebius.apigroups.groupsupport import (
+from automojo.restclient.nebius.nebiusurl import compose_leaf
+from automojo.restclient.nebius.apigroups.groupsupport import (
     collect_pages, is_not_found, raise_for_status
 )
-from automojo.interop.nebius.model.nebiusdisk import NebiusDisk
-from automojo.interop.nebius.model.nebiustaskhandle import NebiusTaskHandle
-from automojo.interop.nebius.specs.nebiusdiskspec import NebiusDiskSpec
+from automojo.restclient.nebius.model.nebiusdisk import NebiusDisk
+from automojo.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
+from automojo.restclient.nebius.specs.nebiusdiskspec import NebiusDiskSpec
 
 
 def _operation_id_of(*, payload: Dict[str, Any]) -> str:

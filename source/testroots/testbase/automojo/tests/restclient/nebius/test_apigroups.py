@@ -16,27 +16,27 @@ __credits__ = []
 import pytest
 import requests_mock as rm_module
 
-from automojo.interop.nebius.exceptions.nebiusexceptions import (
+from automojo.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusAcceleratorNotAvailableError, NebiusCidrValidationError
 )
-from automojo.interop.nebius.specs.nebiusvpcspec import NebiusVpcSpec
-from automojo.interop.nebius.specs.nebiussubnetspec import NebiusSubnetSpec
-from automojo.interop.nebius.specs.nebiussecuritygroupspec import (
+from automojo.restclient.nebius.specs.nebiusvpcspec import NebiusVpcSpec
+from automojo.restclient.nebius.specs.nebiussubnetspec import NebiusSubnetSpec
+from automojo.restclient.nebius.specs.nebiussecuritygroupspec import (
     NebiusSecurityGroupSpec
 )
-from automojo.interop.nebius.specs.nebiusdiskspec import NebiusDiskSpec
-from automojo.interop.nebius.specs.nebiusplacementgroupspec import (
+from automojo.restclient.nebius.specs.nebiusdiskspec import NebiusDiskSpec
+from automojo.restclient.nebius.specs.nebiusplacementgroupspec import (
     NebiusPlacementGroupSpec
 )
-from automojo.interop.nebius.specs.nebiusvmspec import NebiusVmSpec
-from automojo.interop.nebius.specs.nebiusfilesystemspec import (
+from automojo.restclient.nebius.specs.nebiusvmspec import NebiusVmSpec
+from automojo.restclient.nebius.specs.nebiusfilesystemspec import (
     NebiusFilesystemSpec
 )
-from automojo.interop.nebius.specs.nebiusmounttargetspec import (
+from automojo.restclient.nebius.specs.nebiusmounttargetspec import (
     NebiusMountTargetSpec
 )
 
-from automojo.tests.interop.nebius.testsupport import (
+from automojo.tests.restclient.nebius.testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 

@@ -15,8 +15,8 @@ from automojo.credentials.nebiusserviceaccountcredential import (
     NebiusServiceAccountCredential
 )
 
-from automojo.interop.nebius.aspectsnebius import AspectsNebius
-from automojo.interop.nebius.nebiusclient import NebiusClient
+from automojo.restclient.nebius.aspectsnebius import AspectsNebius
+from automojo.restclient.nebius.nebiusclient import NebiusClient
 
 
 TEST_HOST = "api.nebius.test"
