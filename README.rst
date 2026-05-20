@@ -1,50 +1,65 @@
-=======================
-python-package-template
-=======================
-This is a template repository that can be used to quickly create a python package project.
+=========================================
+Automation Mojo Interop - Nebius
+=========================================
 
-=========================
-Features of this Template
-=========================
-* Machine Setup
-* Virtual Environment Setup (Poetry)
-* PyPi Publishing
+The ``automojo-interop-nebius`` package is the venue-specific REST client for Nebius, a
+GPU-focused European cloud whose API exposes first-class InfiniBand-enabled placement
+groups and a native shared-filesystem service suitable for distributed-training workloads.
+Nebius shares enough of its shape with conventional IaaS providers to slot into the
+neutral ``CloudProvisioner`` model defined in ``automojo-provisioning`` while adding the
+GPU/RDMA dimensions covered by ``CloudAcceleratorSpec`` and ``CloudInterconnect``.
 
-========================
-How to Use This Template
-========================
-- Click the 'Use this template' button
-- Fill in the information to create your repository
-- Checkout your new repository
-- Change the following in 'repository-config.ini'
-
-  #. 'PROJECT NAME'
-  #. 'REPOSITORY_NAME'
-
-- If you have machine dependencies to add, put them in 'setup-ubuntu-machine'
-- Modify the pyproject.toml file with the correct package-name, author, publishing information, etc.
-- Rename the VSCODE workspace file 'mv workspaces/default-workspace.template workspaces/(project name).template'
-- Replace the README.rst file with your own README
-- Update the LICENSE.txt file with your copyright information and license.
-- Add your dependencies with python poetry 'poetry add (dependency name)'
-- Drop your package code in 'source/packages'
-- Modify the name of your package root in 'pyproject.toml'
-
-  #. 'packages = [{include="(root folder name)", from="source/packages"}]'
-
-=================
-Code Organization
-=================
-* .vscode - Common tasks
-* development - This is where the runtime environment scripts are located
-* repository-setup - Scripts for homing your repository and to your checkout and machine setup
-* userguide - Where you put your user guide
-* source/packages - Put your root folder here 'source/packages/(root-module-folder)'
-* workspaces - This is where you add VSCode workspaces templates and where workspaces show up when homed.
-
-==========
-References
+Highlights
 ==========
 
-- `User Guide <userguide/userguide.rst>`
-- `Coding Standards <userguide/10-00-coding-standards.rst>`
+- ``NebiusClient`` — a ``RestClientBase`` subclass covering project enumeration, VPC/subnet/security-group lifecycle, SSH-key registration, and image lookup.
+- Instance and storage lifecycle — instance launch/inspect/terminate, disk provisioning and attachment.
+- Placement groups and shared filesystems — placement-group creation with interconnect kind, plus native shared-filesystem provisioning and mount-target management.
+- Typed task handles — long-running operations return typed ``NebiusTaskHandle`` instances for the provisioner's verify stage.
+- Aspects-driven transport — every behaviour-bearing call accepts ``aspects: AspectsRest = DEFAULT_NEBIUS_ASPECTS``; credentials enter as typed ``NebiusServiceAccountCredential`` instances from ``automojo-credentials``.
+
+Repository Structure
+====================
+
+- ``development/`` - Runtime environment scripts.
+- ``repository-setup/`` - Repository homing and setup scripts.
+- ``source/packages/automojo/interop/nebius/`` - Package source code.
+- ``source/testroots/testbase/automojo/tests/interop/nebius/`` - TestBase test roots.
+- ``specs/`` - Requirements, design, and task documentation (Kiro-style).
+- ``userguide/`` - Standards, conventions, and documentation.
+
+Environment Setup
+=================
+
+When working in a Codex container:
+
+.. code-block:: bash
+
+   ./development/setup-agent-container
+
+For local development:
+
+.. code-block:: bash
+
+   ./repository-setup/rehome-repository
+   ./development/setup-environment
+
+Running Tests
+=============
+
+.. code-block:: bash
+
+   source .venv/bin/activate
+   PYTHONPATH=source/packages:source/testroots/testbase python -m pytest source/testroots -q
+
+Standards and Conventions
+=========================
+
+- Naming conventions: ``userguide/10-02-naming-conventions.rst``
+- Code organization: ``userguide/10-01-code-organization.rst``
+- Coding standards: ``userguide/10-00-coding-standards.rst``
+
+Additional Resources
+====================
+
+- User guide entry point: ``userguide/userguide.rst``
