@@ -89,9 +89,12 @@ def iter_pages(*, fetch_page: Callable[[Optional[str]], Dict[str, Any]],
 
         :returns: An iterator over the items across every page.
 
-        :raises: :class:`SemanticError` when a page omits the items field.
+        :raises: :class:`SemanticError` when a page omits the items field,
+            or when the endpoint returns a cursor token that has already
+            been seen (cursor cycle).
     """
     cursor: Optional[str] = None
+    seen_cursors: List[str] = []
     while True:
         page = fetch_page(cursor)
         if items_field not in page:
@@ -106,9 +109,18 @@ def iter_pages(*, fetch_page: Callable[[Optional[str]], Dict[str, Any]],
         for item in items:
             yield item
 
-        cursor = page.get(cursor_field, None)
-        if cursor is None or len(cursor) == 0:
+        next_cursor = page.get(cursor_field, None)
+        if next_cursor is None or len(next_cursor) == 0:
             break
+
+        if next_cursor in seen_cursors:
+            err_msg_lines = ["Nebius cursor pagination detected a cursor cycle."]
+            err_msg_lines.append("REPEATED CURSOR: {}".format(next_cursor))
+            err_msg = os.linesep.join(err_msg_lines)
+            raise SemanticError(err_msg)
+
+        seen_cursors.append(next_cursor)
+        cursor = next_cursor
     return
 
 
