@@ -14,7 +14,7 @@ IB-enabled placement groups.
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│  automojo-provisioning / venues / nebius               │
+│  codecraftai-provisioning / venues / nebius               │
 └──────────┬─────────────────────────────────────────────┘
            │
            ▼
@@ -53,7 +53,7 @@ Exceptions: `NebiusAuthenticationError`, `NebiusCidrValidationError`,
 ## Module Layout
 
 ```
-source/packages/automojo/restclient/nebius/
+source/packages/ccai/restclient/nebius/
 ├── nebiusclient.py
 ├── aspectsnebius.py
 ├── apigroups/
@@ -66,9 +66,9 @@ source/packages/automojo/restclient/nebius/
 
 ## See Also
 
-- `automojo-restclient-base/specs/restapigroup-enhancements/`
-- `automojo-provisioning/specs/venue-nebius/`
-- `automojo-credentials/specs/nebius-credentials/`
+- `codecraftai-restclient-base/specs/restapigroup-enhancements/`
+- `codecraftai-provisioning/specs/venue-nebius/`
+- `codecraftai-credentials/specs/nebius-credentials/`
 
 ---
 

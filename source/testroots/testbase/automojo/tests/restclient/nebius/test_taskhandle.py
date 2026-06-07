@@ -7,18 +7,18 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
 import pytest
 import requests_mock as rm_module
 
-from automojo.errors.exceptions import SemanticError
+from ccai.errors.exceptions import SemanticError
 
-from automojo.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
+from ccai.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
 
-from automojo.tests.restclient.nebius.testsupport import (
+from ccai.tests.restclient.nebius.testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 

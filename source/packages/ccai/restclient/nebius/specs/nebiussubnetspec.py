@@ -1,0 +1,29 @@
+"""
+    .. module:: nebiussubnetspec
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Hand-authored typed Nebius API request payload :class:`NebiusSubnetSpec`.
+
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+"""
+
+__author__ = "Myron Walker"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
+__credits__ = []
+
+
+from typing import Any, Dict, List, Optional
+
+from ccai.restclient.base.schemaobject import SchemaObject
+from ccai.restclient.base.schemafield import Field
+
+
+class NebiusSubnetSpec(SchemaObject):
+    """
+        Request payload to create a Nebius subnet.
+    """
+
+    vpc_id = Field(str, required=True)
+    name = Field(str, required=True)
+    ipv4_cidr_block = Field(str, required=True)
+    zone_id = Field(str, required=True)
+    labels = Field(Optional[dict], required=False, default=None)

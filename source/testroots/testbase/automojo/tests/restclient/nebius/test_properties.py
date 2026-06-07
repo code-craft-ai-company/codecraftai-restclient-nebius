@@ -10,7 +10,7 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
@@ -21,17 +21,17 @@ import requests_mock as rm_module
 
 from hypothesis import given, settings, strategies as st
 
-from automojo.errors.exceptions import SemanticError
+from ccai.errors.exceptions import SemanticError
 
-from automojo.restclient.nebius.nebiusurl import compose_leaf
-from automojo.restclient.nebius.apigroups.subnetsgroup import cidr_contained
-from automojo.restclient.nebius.apigroups.groupsupport import collect_pages
-from automojo.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
-from automojo.restclient.nebius.exceptions.nebiusexceptions import (
+from ccai.restclient.nebius.nebiusurl import compose_leaf
+from ccai.restclient.nebius.apigroups.subnetsgroup import cidr_contained
+from ccai.restclient.nebius.apigroups.groupsupport import collect_pages
+from ccai.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
+from ccai.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusCidrValidationError
 )
 
-from automojo.tests.restclient.nebius.testsupport import (
+from ccai.tests.restclient.nebius.testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 
@@ -121,7 +121,7 @@ def test_idempotent_create_never_posts_when_present(repeat):
         Repeated ``vpcs.create`` calls against an existing VPC never POST,
         regardless of how many times the call is repeated.
     """
-    from automojo.restclient.nebius.specs.nebiusvpcspec import NebiusVpcSpec
+    from ccai.restclient.nebius.specs.nebiusvpcspec import NebiusVpcSpec
 
     client = make_client()
     spec = NebiusVpcSpec(parent_id="proj-1", name="vpc-x",

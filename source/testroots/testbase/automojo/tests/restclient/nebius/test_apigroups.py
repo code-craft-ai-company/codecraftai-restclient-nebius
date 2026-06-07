@@ -9,34 +9,34 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
 import pytest
 import requests_mock as rm_module
 
-from automojo.restclient.nebius.exceptions.nebiusexceptions import (
+from ccai.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusAcceleratorNotAvailableError, NebiusCidrValidationError
 )
-from automojo.restclient.nebius.specs.nebiusvpcspec import NebiusVpcSpec
-from automojo.restclient.nebius.specs.nebiussubnetspec import NebiusSubnetSpec
-from automojo.restclient.nebius.specs.nebiussecuritygroupspec import (
+from ccai.restclient.nebius.specs.nebiusvpcspec import NebiusVpcSpec
+from ccai.restclient.nebius.specs.nebiussubnetspec import NebiusSubnetSpec
+from ccai.restclient.nebius.specs.nebiussecuritygroupspec import (
     NebiusSecurityGroupSpec
 )
-from automojo.restclient.nebius.specs.nebiusdiskspec import NebiusDiskSpec
-from automojo.restclient.nebius.specs.nebiusplacementgroupspec import (
+from ccai.restclient.nebius.specs.nebiusdiskspec import NebiusDiskSpec
+from ccai.restclient.nebius.specs.nebiusplacementgroupspec import (
     NebiusPlacementGroupSpec
 )
-from automojo.restclient.nebius.specs.nebiusvmspec import NebiusVmSpec
-from automojo.restclient.nebius.specs.nebiusfilesystemspec import (
+from ccai.restclient.nebius.specs.nebiusvmspec import NebiusVmSpec
+from ccai.restclient.nebius.specs.nebiusfilesystemspec import (
     NebiusFilesystemSpec
 )
-from automojo.restclient.nebius.specs.nebiusmounttargetspec import (
+from ccai.restclient.nebius.specs.nebiusmounttargetspec import (
     NebiusMountTargetSpec
 )
 
-from automojo.tests.restclient.nebius.testsupport import (
+from ccai.tests.restclient.nebius.testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 
