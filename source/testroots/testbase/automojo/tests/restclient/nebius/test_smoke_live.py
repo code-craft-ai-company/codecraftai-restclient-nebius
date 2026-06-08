@@ -11,7 +11,7 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
@@ -19,10 +19,10 @@ import os
 
 import pytest
 
-from automojo.credentials.nebiusserviceaccountcredential import (
+from ccai.credentials.nebiusserviceaccountcredential import (
     NebiusServiceAccountCredential
 )
-from automojo.restclient.nebius.nebiusclient import NebiusClient
+from ccai.restclient.nebius.nebiusclient import NebiusClient
 
 
 _RUN_LIVE = os.environ.get("RUN_LIVE_NEBIUS", "0") == "1"

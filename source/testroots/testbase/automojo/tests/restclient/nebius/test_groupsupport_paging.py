@@ -9,7 +9,7 @@
 """
 
 __author__ = "Myron Walker"
-__copyright__ = "Copyright 2026, Automation Mojo LLC"
+__copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
@@ -17,9 +17,9 @@ import pytest
 
 from typing import Any, Dict, List, Optional
 
-from automojo.errors.exceptions import SemanticError
+from ccai.errors.exceptions import SemanticError
 
-from automojo.restclient.nebius.apigroups.groupsupport import iter_pages
+from ccai.restclient.nebius.apigroups.groupsupport import iter_pages
 
 
 def test_iter_pages_terminates_on_empty_cursor():
