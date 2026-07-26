@@ -19,7 +19,8 @@ import ipaddress
 import pytest
 import requests_mock as rm_module
 
-from hypothesis import given, settings, strategies as st
+from ccai.testbase.properties import given
+from ccai.testbase.properties import strategies as st
 
 from ccai.errors.exceptions import SemanticError
 
@@ -40,8 +41,8 @@ from ccai.tests.restclient.nebius.testsupport import (
 # 1. Paging cursor traversal
 # ----------------------------------------------------------------------
 
-@settings(max_examples=60, deadline=None)
-@given(page_sizes=st.lists(st.integers(min_value=0, max_value=5),
+@given(
+    constraints={"max_examples": 60},page_sizes=st.lists(st.integers(min_value=0, max_value=5),
                            min_size=1, max_size=8))
 def test_paging_traversal_visits_every_item(page_sizes):
     """
@@ -78,8 +79,8 @@ def test_paging_traversal_visits_every_item(page_sizes):
 # 2. URL composition — encoding + rejection
 # ----------------------------------------------------------------------
 
-@settings(max_examples=80, deadline=None)
-@given(segments=st.lists(st.text(min_size=1, max_size=12),
+@given(
+    constraints={"max_examples": 80},segments=st.lists(st.text(min_size=1, max_size=12),
                          min_size=1, max_size=5))
 def test_compose_leaf_is_deterministic_and_segmented(segments):
     """
@@ -96,8 +97,8 @@ def test_compose_leaf_is_deterministic_and_segmented(segments):
     return
 
 
-@settings(max_examples=40, deadline=None)
-@given(prefix=st.lists(st.text(min_size=1, max_size=6), max_size=3),
+@given(
+    constraints={"max_examples": 40},prefix=st.lists(st.text(min_size=1, max_size=6), max_size=3),
        suffix=st.lists(st.text(min_size=1, max_size=6), max_size=3))
 def test_compose_leaf_rejects_empty_segment(prefix, suffix):
     """
@@ -114,8 +115,7 @@ def test_compose_leaf_rejects_empty_segment(prefix, suffix):
 # 3. Idempotent retry semantics
 # ----------------------------------------------------------------------
 
-@settings(max_examples=30, deadline=None)
-@given(repeat=st.integers(min_value=2, max_value=6))
+@given(repeat=st.integers(min_value=2, max_value=6), constraints={"max_examples": 30})
 def test_idempotent_create_never_posts_when_present(repeat):
     """
         Repeated ``vpcs.create`` calls against an existing VPC never POST,
@@ -149,8 +149,8 @@ def test_idempotent_create_never_posts_when_present(repeat):
 # 4. CIDR containment
 # ----------------------------------------------------------------------
 
-@settings(max_examples=80, deadline=None)
-@given(parent_prefix=st.integers(min_value=8, max_value=20),
+@given(
+    constraints={"max_examples": 80},parent_prefix=st.integers(min_value=8, max_value=20),
        extra_bits=st.integers(min_value=1, max_value=8),
        host_index=st.integers(min_value=0, max_value=4))
 def test_subnet_of_parent_is_contained(parent_prefix, extra_bits,
@@ -176,8 +176,7 @@ def test_subnet_of_parent_is_contained(parent_prefix, extra_bits,
     return
 
 
-@settings(max_examples=30, deadline=None)
-@given(bad=st.text(min_size=1, max_size=10))
+@given(bad=st.text(min_size=1, max_size=10), constraints={"max_examples": 30})
 def test_cidr_containment_rejects_unparseable(bad):
     """
         ``cidr_contained`` raises NebiusCidrValidationError on a CIDR string
@@ -195,8 +194,8 @@ def test_cidr_containment_rejects_unparseable(bad):
 # 5. NebiusTaskHandle.wait terminal-state correctness
 # ----------------------------------------------------------------------
 
-@settings(max_examples=40, deadline=None)
-@given(running_count=st.integers(min_value=0, max_value=6),
+@given(
+    constraints={"max_examples": 40},running_count=st.integers(min_value=0, max_value=6),
        terminal=st.sampled_from(["DONE", "FAILED", "CANCELLED"]))
 def test_wait_returns_first_terminal_state(running_count, terminal):
     """
