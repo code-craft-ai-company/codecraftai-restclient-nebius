@@ -15,6 +15,9 @@ __copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
+from ccai.errors.exceptions import SkipError
+
+
 import os
 
 import pytest
@@ -37,7 +40,7 @@ def live_client() -> NebiusClient:
     """
     token = os.environ.get("NEBIUS_SA_TOKEN", None)
     if token is None or len(token) == 0:
-        pytest.skip("NEBIUS_SA_TOKEN is not set.")
+        raise SkipError("NEBIUS_SA_TOKEN is not set.")
 
     credential = NebiusServiceAccountCredential(
         identifier="nebius-live", categories=["hpc-venue"], token=token,
@@ -46,12 +49,13 @@ def live_client() -> NebiusClient:
     return rtnval
 
 
-@pytest.mark.skipif(not _RUN_LIVE,
-                    reason="RUN_LIVE_NEBIUS != 1; live smoke test skipped.")
 def test_live_list_projects(live_client) -> None:
     """
         Enumerate projects against the live Nebius API.
     """
+    if not _RUN_LIVE:
+        raise SkipError("RUN_LIVE_NEBIUS != 1; live smoke test skipped.")
+
     projects = live_client.projects.list()
     assert isinstance(projects, list)
     return

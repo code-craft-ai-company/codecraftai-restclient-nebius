@@ -13,7 +13,9 @@ __copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
-import pytest
+from ccai import testbase
+
+
 import requests_mock as rm_module
 
 from ccai.restclient.nebius.exceptions.nebiusexceptions import (
@@ -119,7 +121,7 @@ def test_create_subnet_rejects_uncontained_cidr():
         mock.get("{}/v1/vpcs/vpc-1".format(TEST_BASE),
                  json={"id": "vpc-1", "ipv4_cidr_block": "10.0.0.0/16"})
 
-        with pytest.raises(NebiusCidrValidationError):
+        with testbase.raises(NebiusCidrValidationError):
             client.subnets.create(spec=spec)
     return
 
@@ -281,7 +283,7 @@ def test_launch_vm_rejects_unavailable_gpu_platform():
         post_marker = mock.post("{}/v1/instances".format(TEST_BASE),
                                 json={"id": "x"})
 
-        with pytest.raises(NebiusAcceleratorNotAvailableError):
+        with testbase.raises(NebiusAcceleratorNotAvailableError):
             client.vms.launch(spec=spec)
         assert post_marker.called is False
     return

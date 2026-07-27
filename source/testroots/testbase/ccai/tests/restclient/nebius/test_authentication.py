@@ -12,9 +12,11 @@ __copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
+from ccai import testbase
+
+
 import time
 
-import pytest
 import requests_mock as rm_module
 
 from ccai.errors.exceptions import ConfigurationError
@@ -37,7 +39,7 @@ def test_construction_rejects_non_nebius_credential():
         A non-Nebius credential is rejected at construction time.
     """
     bogus = BaseCredential(identifier="x", categories=["other"])
-    with pytest.raises(ConfigurationError):
+    with testbase.raises(ConfigurationError):
         NebiusClient(credential=bogus, host=TEST_HOST)
     return
 
@@ -115,7 +117,7 @@ def test_failed_exchange_raises_authentication_error():
     with rm_module.Mocker() as mock:
         mock.post("{}/oauth/token".format(TEST_BASE), status_code=401,
                   json={"error": "invalid_grant"})
-        with pytest.raises(NebiusAuthenticationError):
+        with testbase.raises(NebiusAuthenticationError):
             client.projects.list()
     return
 
@@ -130,7 +132,7 @@ def test_persistent_401_reclassified():
         register_token_exchange(mock=mock)
         mock.get("{}/v1/projects".format(TEST_BASE), status_code=401,
                  json={"error": "unauthorized"})
-        with pytest.raises(NebiusAuthenticationError):
+        with testbase.raises(NebiusAuthenticationError):
             client.projects.list()
     return
 
@@ -145,6 +147,6 @@ def test_403_reclassified():
         register_token_exchange(mock=mock)
         mock.get("{}/v1/projects".format(TEST_BASE), status_code=403,
                  json={"error": "forbidden"})
-        with pytest.raises(NebiusAuthenticationError):
+        with testbase.raises(NebiusAuthenticationError):
             client.projects.list()
     return

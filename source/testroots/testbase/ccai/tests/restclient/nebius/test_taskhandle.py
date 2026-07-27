@@ -11,7 +11,9 @@ __copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
-import pytest
+from ccai import testbase
+
+
 import requests_mock as rm_module
 
 from ccai.errors.exceptions import SemanticError
@@ -28,7 +30,7 @@ def test_task_handle_rejects_empty_operation_id():
         NebiusTaskHandle construction rejects an empty operation id.
     """
     client = make_client()
-    with pytest.raises(SemanticError):
+    with testbase.raises(SemanticError):
         NebiusTaskHandle(operation_id="", client=client)
     return
 
@@ -89,7 +91,7 @@ def test_wait_times_out_when_never_terminal():
         mock.get("{}/v1/operations/op-3".format(TEST_BASE),
                  json={"id": "op-3", "status": "RUNNING"})
 
-        with pytest.raises(TimeoutError):
+        with testbase.raises(TimeoutError):
             handle.wait(aspects=client.aspects)
     return
 

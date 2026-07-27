@@ -14,9 +14,11 @@ __copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
+from ccai import testbase
+
+
 import ipaddress
 
-import pytest
 import requests_mock as rm_module
 
 from ccai.testbase.properties import given
@@ -106,7 +108,7 @@ def test_compose_leaf_rejects_empty_segment(prefix, suffix):
         regardless of surrounding valid segments.
     """
     parts = list(prefix) + [""] + list(suffix)
-    with pytest.raises(SemanticError):
+    with testbase.raises(SemanticError):
         compose_leaf(parts=parts)
     return
 
@@ -185,7 +187,7 @@ def test_cidr_containment_rejects_unparseable(bad):
     try:
         ipaddress.ip_network(bad, strict=False)
     except (TypeError, ValueError):
-        with pytest.raises(NebiusCidrValidationError):
+        with testbase.raises(NebiusCidrValidationError):
             cidr_contained(parent_cidr="10.0.0.0/16", child_cidr=bad)
     return
 
