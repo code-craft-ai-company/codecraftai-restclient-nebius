@@ -34,7 +34,7 @@ from ccai.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusCidrValidationError
 )
 
-from ccai.tests.restclient.nebius.testsupport import (
+from .testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 

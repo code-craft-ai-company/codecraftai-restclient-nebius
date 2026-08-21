@@ -20,7 +20,7 @@ from ccai.errors.exceptions import SemanticError
 
 from ccai.restclient.nebius.model.nebiustaskhandle import NebiusTaskHandle
 
-from ccai.tests.restclient.nebius.testsupport import (
+from .testsupport import (
     TEST_BASE, make_client, register_token_exchange
 )
 

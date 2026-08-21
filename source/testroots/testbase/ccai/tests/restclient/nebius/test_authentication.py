@@ -28,7 +28,7 @@ from ccai.restclient.nebius.exceptions.nebiusexceptions import (
     NebiusAuthenticationError
 )
 
-from ccai.tests.restclient.nebius.testsupport import (
+from .testsupport import (
     TEST_BASE, TEST_HOST, fast_aspects, make_client, make_credential,
     register_token_exchange
 )
