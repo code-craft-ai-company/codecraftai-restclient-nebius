@@ -15,12 +15,12 @@ __copyright__ = "Copyright 2026, Code Craft AI LLC"
 __credits__ = []
 
 
+from ccai import testbase
+
 from ccai.errors.exceptions import SkipError
 
 
 import os
-
-import pytest
 
 from ccai.credentials.nebiusserviceaccountcredential import (
     NebiusServiceAccountCredential
@@ -31,8 +31,7 @@ from ccai.restclient.nebius.nebiusclient import NebiusClient
 _RUN_LIVE = os.environ.get("RUN_LIVE_NEBIUS", "0") == "1"
 
 
-@pytest.fixture
-def live_client() -> NebiusClient:
+def _build_live_client() -> NebiusClient:
     """
         Build a :class:`NebiusClient` from the ``NEBIUS_SA_TOKEN`` env var.
 
@@ -49,13 +48,20 @@ def live_client() -> NebiusClient:
     return rtnval
 
 
-def test_live_list_projects(live_client) -> None:
+def test_live_list_projects() -> None:
     """
         Enumerate projects against the live Nebius API.
+
+        The client was a pytest fixture before this suite ran under
+        testbase, which does not inject pytest fixtures -- the parameter
+        was simply undefined, so the test errored rather than skipping.
+        It is built here instead, after the gate.
     """
     if not _RUN_LIVE:
         raise SkipError("RUN_LIVE_NEBIUS != 1; live smoke test skipped.")
 
+    live_client = _build_live_client()
+
     projects = live_client.projects.list()
-    assert isinstance(projects, list)
+    testbase.assert_true(isinstance(projects, list))
     return
